@@ -19,12 +19,12 @@
       <a-entity light="type: directional; color: #EEE; intensity: 0.025" position="0 0 -1"></a-entity>
       <a-entity light="type: ambient; color: #CCC"></a-entity>
       
-      <a-image id="cal1" src="cal.jpg" position="11 3 -12">
+      <a-image id="cal1" src="cal.jpg" look-at="[camera]" position="11 3 -12">
         <a-animation attribute="scale" begin="look" to="1.2 1.2 1.2" dur="500"></a-animation>
         <a-animation attribute="scale" begin="unlook" to="1 1 1" dur="250"></a-animation>
       </a-image>
       
-      <a-image id="cal2" src="cal.jpg" position="9 3 -6">
+      <a-image id="cal2" src="cal.jpg" look-at="[camera]" position="9 3 -6">
         <a-animation attribute="scale" begin="look" to="1.2 1.2 1.2" dur="500"></a-animation>
         <a-animation attribute="scale" begin="unlook" to="1 1 1" dur="250"></a-animation>
       </a-image>
