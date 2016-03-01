@@ -7,79 +7,19 @@
     <script src="https://aframe.io/releases/0.1.2/aframe.min.js"></script>
   </head>
   <body>
-    <a-scene>
-      <a-entity id="cam" camera look-controls wasd-controls="enabled: true" position="0 1.8 4">
-        <a-animation attribute="position" begin="moveBlock" to="6 1.8 4" dur="6000"></a-animation>
-        <a-animation attribute="position" begin="movePin" to="-6 3 5" dur="6000"></a-animation>
-        <a-entity id="cursor" cursor="fuse: true; maxDistance: 30; timeout: 300"
-                  position="0 0 -1"
-                  geometry="primitive: ring; radiusOuter: 0.012; radiusInner: 0.0"
-                  material="color: white; shader: flat"
-                  scale="1 1 1">
-          <a-animation id="dilate" attribute="scale" begin="look" to="2 2 2" dur="200"></a-animation>
-          <a-animation attribute="geometry.radiusInner" ease="ease-out" begin="loodk" to="0.01" dur="300"></a-animation>
-          
-          <a-animation id="dilate" attribute="scale" begin="unlook" to="1 1 1" dur="200"></a-animation>
-          <a-animation attribute="geometry.radiusInner" begin="unlook" to="0" dur="200"></a-animation>
-        </a-entity>
-      </a-entity>
+    <a-scene fog="type: exponential; color: #000000; density: 	0.025">
+      <a-camera cursor-color="#1ca890" wasd-controls-enabled="true" position="9 7.5 -6"></a-camera>
+      <a-entity light="type: directional; color: #EEE; intensity: 0.25" position="-1 1 0"></a-entity>
+      <a-entity light="type: directional; color: #EEE; intensity: 0.03" position="1 0 0"></a-entity>
+      <a-entity light="type: directional; color: #EEE; intensity: 0.05" position="0 0 1"></a-entity>
+      <a-entity light="type: directional; color: #EEE; intensity: 0.025" position="-1 0 0"></a-entity>
+      <a-entity light="type: directional; color: #EEE; intensity: 0.025" position="0 0 -1"></a-entity>
+      <a-entity light="type: ambient; color: #CCC"></a-entity>
       
-      <a-entity id="cube" geometry="primitive: box" material="color: blue">
-        <a-mouseenter target="#dilate" dur="5000"></a-mouseenter>
-      </a-entity>
-      <a-entity id="cube2" geometry="primitive: box" material="color: green" position="6 1.8 4">
-        <a-animation attribute="scale" begin="look" to="2 2 2" dur="200"></a-animation>
-        <a-animation attribute="scale" begin="unlook" to="1 1 1" dur="200"></a-animation>
-      </a-entity>
+      <a-model src="room4.1.dae" rotation="0 0 0" scale="5 5 5"></a-model>
       
-      <a-image id="pin" src="pin.png" width="2" height="2" position="-6 3 5" opacity="0.5" look-at="[camera]">
-        <a-animation attribute="opacity" begin="look" to="0.8" dur="250"></a-animation>
-        <a-animation attribute="opacity" begin="unlook" to="0.5" dur="250"></a-animation>
-        
-        <a-animation attribute="scale" begin="look" to="1.2 1.2 1.2" dur="500"></a-animation>
-        <a-animation attribute="scale" begin="unlook" to="1 1 1" dur="250"></a-animation>
-      </a-image>
-      
-      <a-sphere position="0 1.25 -1" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cube position="-1 0.5 1" rotation="0 45 0" width="1" height="1" depth="1"  color="#4CC3D9"></a-cube>
-      <a-cylinder position="1 0.75 1" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-
       <a-sky color="#ECECEC"></a-sky>
 
     </a-scene>
-    <script>
-      document.querySelector('#cube2').addEventListener('click', function () {
-      this.setAttribute('material', 'color', 'red');
-      document.querySelector('#cam').emit('moveBlock');
-      console.log('I was clicked!');
-      });
-      
-      document.querySelector('#pin').addEventListener('click', function () {
-      this.setAttribute('material', 'color', 'red');
-      document.querySelector('#cam').emit('movePin');
-      console.log('I was clicked!');
-      });
-      
-      document.querySelector('#cube2').addEventListener('mouseenter', function () {
-      document.querySelector('#cursor').emit('look');
-      document.querySelector('#cube2').emit('look');
-      });
-      
-      document.querySelector('#cube2').addEventListener('mouseleave', function () {
-      document.querySelector('#cursor').emit('unlook');
-      document.querySelector('#cube2').emit('unlook');
-      });
-      
-      document.querySelector('#pin').addEventListener('mouseenter', function () {
-      document.querySelector('#cursor').emit('look');
-      document.querySelector('#pin').emit('look');
-      });
-      
-      document.querySelector('#pin').addEventListener('mouseleave', function () {
-      document.querySelector('#cursor').emit('unlook');
-      document.querySelector('#pin').emit('unlook');
-      });
-    </script>
   </body>
 </html>
