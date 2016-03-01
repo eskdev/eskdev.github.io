@@ -44,6 +44,7 @@
       
       document.querySelector('#cal1').addEventListener('click', function () {
       document.querySelector('#cam').emit('moveAway');
+      document.querySelector('#cal1').emit('unlook');
       });
       
       document.querySelector('#cal2').addEventListener('mouseenter', function () {
@@ -55,6 +56,7 @@
       
       document.querySelector('#cal2').addEventListener('click', function () {
       document.querySelector('#cam').emit('moveBack');
+      document.querySelector('#cal2').emit('unlook');
       });
     </script>
   </body>
