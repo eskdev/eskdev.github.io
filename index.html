@@ -8,7 +8,10 @@
   </head>
   <body>
     <a-scene fog="type: exponential; color: #000000; density: 	0.025">
-      <a-camera cursor-color="#1ca890" wasd-controls-enabled="true" position="9 7.5 -6"></a-camera>
+      <a-camera id="cam" cursor-color="#1ca890" wasd-controls-enabled="true" position="9 7.5 -6" cursor="fuse: true; maxDistance: 30; timeout: 2000">
+        <a-animation attribute="position" begin="moveAway" to="11 7.5 -12" dur="1"></a-animation>
+        <a-animation attribute="position" begin="moveBack" to="9 7.5 -6" dur="1"></a-animation>
+      </a-camera>
       <a-entity light="type: directional; color: #EEE; intensity: 0.25" position="-1 1 0"></a-entity>
       <a-entity light="type: directional; color: #EEE; intensity: 0.03" position="1 0 0"></a-entity>
       <a-entity light="type: directional; color: #EEE; intensity: 0.05" position="0 0 1"></a-entity>
@@ -16,10 +19,43 @@
       <a-entity light="type: directional; color: #EEE; intensity: 0.025" position="0 0 -1"></a-entity>
       <a-entity light="type: ambient; color: #CCC"></a-entity>
       
+      <a-image id="cal1" src="cal.jpg" position="11 3 -12">
+        <a-animation attribute="scale" begin="look" to="1.2 1.2 1.2" dur="500"></a-animation>
+        <a-animation attribute="scale" begin="unlook" to="1 1 1" dur="250"></a-animation>
+      </a-image>
+      
+      <a-image id="cal2" src="cal.jpg" position="9 3 -6">
+        <a-animation attribute="scale" begin="look" to="1.2 1.2 1.2" dur="500"></a-animation>
+        <a-animation attribute="scale" begin="unlook" to="1 1 1" dur="250"></a-animation>
+      </a-image>
+      
       <a-model src="room4.1.dae" rotation="0 0 0" scale="5 5 5"></a-model>
       
       <a-sky color="#ECECEC"></a-sky>
 
     </a-scene>
+    <script>
+      document.querySelector('#cal1').addEventListener('mouseenter', function () {
+      document.querySelector('#cal1').emit('look');
+      });
+      document.querySelector('#cal1').addEventListener('mouseleave', function () {
+      document.querySelector('#cal1').emit('unlook');
+      });
+      
+      document.querySelector('#cal1').addEventListener('click', function () {
+      document.querySelector('#cam').emit('moveAway');
+      });
+      
+      document.querySelector('#cal2').addEventListener('mouseenter', function () {
+      document.querySelector('#cal2').emit('look');
+      });
+      document.querySelector('#cal2').addEventListener('mouseleave', function () {
+      document.querySelector('#cal2').emit('unlook');
+      });
+      
+      document.querySelector('#cal2').addEventListener('click', function () {
+      document.querySelector('#cam').emit('moveBack');
+      });
+    </script>
   </body>
 </html>
