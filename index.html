@@ -7,7 +7,7 @@
     <title>VR Demo</title>
     <meta name="description" content="VR Demo">
     <script src="https://aframe.io/releases/0.1.2/aframe.min.js"></script>
-    <link rel="icon" sizes="192x192" href="pinFav.png">
+    <link rel="icon" sizes="192x192" href="pin192.png">
   </head>
   <body>
     <a-scene fog="type: exponential; color: #000000; density: 	0.025">
@@ -32,12 +32,12 @@
       <a-entity light="type: directional; color: #EEE; intensity: 0.025" position="0 0 -1"></a-entity>
       <a-entity light="type: ambient; color: #CCC"></a-entity>
       
-      <a-image id="cal1" src="cal.jpg" position="11 3 -12">
+      <a-image id="pin1" src="pin.png" position="11 3 -12">
         <a-animation attribute="scale" begin="look" to="1.2 1.2 1.2" dur="500"></a-animation>
         <a-animation attribute="scale" begin="unlook" to="1 1 1" dur="250"></a-animation>
       </a-image>
       
-      <a-image id="cal2" src="cal.jpg" position="9 3 -6">
+      <a-image id="pin2" src="pin.png" position="9 3 -6">
         <a-animation attribute="scale" begin="look" to="1.2 1.2 1.2" dur="500"></a-animation>
         <a-animation attribute="scale" begin="unlook" to="1 1 1" dur="250"></a-animation>
       </a-image>
@@ -48,31 +48,31 @@
 
     </a-scene>
     <script>
-      document.querySelector('#cal1').addEventListener('mouseenter', function () {
-        document.querySelector('#cal1').emit('look');
+      document.querySelector('#pin1').addEventListener('mouseenter', function () {
+        document.querySelector('#pin1').emit('look');
         document.querySelector('#cursor').emit('look');
       });
-      document.querySelector('#cal1').addEventListener('mouseleave', function () {
-      document.querySelector('#cal1').emit('unlook');
+      document.querySelector('#pin1').addEventListener('mouseleave', function () {
+      document.querySelector('#pin1').emit('unlook');
       document.querySelector('#cursor').emit('unlook');
       });
       
-      document.querySelector('#cal1').addEventListener('click', function () {
-        document.querySelector('#cal1').emit('unlook');
+      document.querySelector('#pin1').addEventListener('click', function () {
+        document.querySelector('#pin1').emit('unlook');
         document.querySelector('#cam').emit('moveAway');
       });
       
-      document.querySelector('#cal2').addEventListener('mouseenter', function () {
-        document.querySelector('#cal2').emit('look');
+      document.querySelector('#pin2').addEventListener('mouseenter', function () {
+        document.querySelector('#pin2').emit('look');
         document.querySelector('#cursor').emit('look');
       });
-      document.querySelector('#cal2').addEventListener('mouseleave', function () {
-        document.querySelector('#cal2').emit('unlook');
+      document.querySelector('#pin2').addEventListener('mouseleave', function () {
+        document.querySelector('#pin2').emit('unlook');
         document.querySelector('#cursor').emit('unlook');
       });
       
-      document.querySelector('#cal2').addEventListener('click', function () {
-        document.querySelector('#cal2').emit('unlook');
+      document.querySelector('#pin2').addEventListener('click', function () {
+        document.querySelector('#pin2').emit('unlook');
         document.querySelector('#cam').emit('moveBack');
       });
     </script>
