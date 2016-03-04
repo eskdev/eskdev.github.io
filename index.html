@@ -11,22 +11,23 @@
   </head>
   <body>
     <a-scene fog="type: exponential; color: #000000; density: 	0.025">
-      <a-entity id="cam" camera look-controls wasd-controls-enabled="true" position="8 7.5 -4">
-        <a-animation attribute="position" begin="move1" to="13 7.5 -12" dur="1"></a-animation>
-        <a-animation attribute="position" begin="move2" to="8 7.5 -4" dur="1"></a-animation>
-        <a-animation attribute="position" begin="move3" to="11 7.5 5" dur="1"></a-animation>
-        <a-animation attribute="position" begin="move4" to="8 7.5 11" dur="1"></a-animation>
-        <a-animation attribute="position" begin="move5" to="18 7.5 15" dur="1"></a-animation>
+      <a-entity id="player" position="8 7.5 -4" rotation="0 0 0">
+        <a-entity id="cam" camera look-controls wasd-controls="true">
+          <a-animation attribute="position" begin="move1" to="13 7.5 -12" dur="1"></a-animation>
+          <a-animation attribute="position" begin="move2" to="8 7.5 -4" dur="1"></a-animation>
+          <a-animation attribute="position" begin="move3" to="11 7.5 5" dur="1"></a-animation>
+          <a-animation attribute="position" begin="move4" to="8 7.5 11" dur="1"></a-animation>
+          <a-animation attribute="position" begin="move5" to="18 7.5 15" dur="1"></a-animation>
         
-        <a-entity id="cursor" cursor="fuse: true; maxDistance: 30; timeout: 2000"
-                  position="0 0 -5"
-                  geometry="primitive: ring; radiusOuter: 0.06; radiusInner: 0.0"
-                  material="color: #282828; shader: flat"
-                  scale="1 1 1">
-          <a-animation attribute="scale" begin="look" to="2 2 2" dur="200"></a-animation>
-          <a-animation attribute="scale" begin="unlook" to="1 1 1" dur="200"></a-animation>
+          <a-entity id="cursor" cursor="fuse: true; maxDistance: 30; timeout: 2000"
+                    position="0 0 -5"
+                    geometry="primitive: ring; radiusOuter: 0.06; radiusInner: 0.0"
+                    material="color: #282828; shader: flat"
+                    scale="1 1 1">
+            <a-animation attribute="scale" begin="look" to="2 2 2" dur="200"></a-animation>
+            <a-animation attribute="scale" begin="unlook" to="1 1 1" dur="200"></a-animation>
+          </a-entity>
         </a-entity>
-      </a-entity>
       </a-entity>
       <a-entity light="type: directional; color: #EEE; intensity: 0.25" position="-1 1 0"></a-entity>
       <a-entity light="type: directional; color: #EEE; intensity: 0.03" position="1 0 0"></a-entity>
