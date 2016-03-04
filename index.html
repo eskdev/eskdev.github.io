@@ -11,9 +11,12 @@
   </head>
   <body>
     <a-scene fog="type: exponential; color: #000000; density: 	0.025">
-      <a-entity id="cam" camera look-controls wasd-controls-enabled="true" position="9 7.5 -6">
-        <a-animation attribute="position" begin="moveAway" to="11 7.5 -12" dur="1"></a-animation>
-        <a-animation attribute="position" begin="moveBack" to="9 7.5 -6" dur="1"></a-animation>
+      <a-entity id="cam" camera look-controls wasd-controls-enabled="true" position="8 7.5 -4">
+        <a-animation attribute="position" begin="move1" to="13 7.5 -12" dur="1"></a-animation>
+        <a-animation attribute="position" begin="move2" to="8 7.5 -4" dur="1"></a-animation>
+        <a-animation attribute="position" begin="move3" to="11 7.5 5" dur="1"></a-animation>
+        <a-animation attribute="position" begin="move4" to="8 7.5 11" dur="1"></a-animation>
+        <a-animation attribute="position" begin="move5" to="18 7.5 15" dur="1"></a-animation>
         
         <a-entity id="cursor" cursor="fuse: true; maxDistance: 30; timeout: 2000"
                   position="0 0 -5"
@@ -32,17 +35,32 @@
       <a-entity light="type: directional; color: #EEE; intensity: 0.025" position="0 0 -1"></a-entity>
       <a-entity light="type: ambient; color: #CCC"></a-entity>
       
-      <a-image id="pin1" src="pin.png" position="11 3 -12">
+      <a-image id="pin1" src="pin.png" look-at="[camera]" position="13 3 -12">
         <a-animation attribute="scale" begin="look" to="1.2 1.2 1.2" dur="500"></a-animation>
         <a-animation attribute="scale" begin="unlook" to="1 1 1" dur="250"></a-animation>
       </a-image>
       
-      <a-image id="pin2" src="pin.png" position="9 3 -6">
+      <a-image id="pin2" src="pin.png" look-at="[camera]" position="8 3 -4">
         <a-animation attribute="scale" begin="look" to="1.2 1.2 1.2" dur="500"></a-animation>
         <a-animation attribute="scale" begin="unlook" to="1 1 1" dur="250"></a-animation>
       </a-image>
       
-      <a-model src="room4.1.dae" rotation="0 0 0" scale="5 5 5"></a-model>
+      <a-image id="pin3" src="pin.png" look-at="[camera]" position="11 3 5">
+        <a-animation attribute="scale" begin="look" to="1.2 1.2 1.2" dur="500"></a-animation>
+        <a-animation attribute="scale" begin="unlook" to="1 1 1" dur="250"></a-animation>
+      </a-image>
+      
+      <a-image id="pin4" src="pin.png" look-at="[camera]" position="8 3 11">
+        <a-animation attribute="scale" begin="look" to="1.2 1.2 1.2" dur="500"></a-animation>
+        <a-animation attribute="scale" begin="unlook" to="1 1 1" dur="250"></a-animation>
+      </a-image>
+      
+      <a-image id="pin5" src="pin.png" look-at="[camera]" position="18 3 15">
+        <a-animation attribute="scale" begin="look" to="1.2 1.2 1.2" dur="500"></a-animation>
+        <a-animation attribute="scale" begin="unlook" to="1 1 1" dur="250"></a-animation>
+      </a-image>
+      
+      <a-model src="concept.dae" rotation="0 0 0" scale="5 5 5"></a-model>
       
       <a-sky color="#ECECEC"></a-sky>
 
@@ -53,13 +71,13 @@
         document.querySelector('#cursor').emit('look');
       });
       document.querySelector('#pin1').addEventListener('mouseleave', function () {
-      document.querySelector('#pin1').emit('unlook');
-      document.querySelector('#cursor').emit('unlook');
+        document.querySelector('#pin1').emit('unlook');
+        document.querySelector('#cursor').emit('unlook');
       });
       
       document.querySelector('#pin1').addEventListener('click', function () {
         document.querySelector('#pin1').emit('unlook');
-        document.querySelector('#cam').emit('moveAway');
+        document.querySelector('#cam').emit('move1');
       });
       
       document.querySelector('#pin2').addEventListener('mouseenter', function () {
@@ -73,7 +91,49 @@
       
       document.querySelector('#pin2').addEventListener('click', function () {
         document.querySelector('#pin2').emit('unlook');
-        document.querySelector('#cam').emit('moveBack');
+        document.querySelector('#cam').emit('move2');
+      });
+      
+      document.querySelector('#pin3').addEventListener('mouseenter', function () {
+        document.querySelector('#pin3').emit('look');
+        document.querySelector('#cursor').emit('look');
+      });
+      document.querySelector('#pin3').addEventListener('mouseleave', function () {
+        document.querySelector('#pin3').emit('unlook');
+        document.querySelector('#cursor').emit('unlook');
+      });
+      
+      document.querySelector('#pin3').addEventListener('click', function () {
+        document.querySelector('#pin3').emit('unlook');
+        document.querySelector('#cam').emit('move3');
+      });
+      
+      document.querySelector('#pin4').addEventListener('mouseenter', function () {
+        document.querySelector('#pin4').emit('look');
+        document.querySelector('#cursor').emit('look');
+      });
+      document.querySelector('#pin4').addEventListener('mouseleave', function () {
+        document.querySelector('#pin4').emit('unlook');
+        document.querySelector('#cursor').emit('unlook');
+      });
+      
+      document.querySelector('#pin4').addEventListener('click', function () {
+        document.querySelector('#pin4').emit('unlook');
+        document.querySelector('#cam').emit('move4');
+      });
+      
+      document.querySelector('#pin5').addEventListener('mouseenter', function () {
+        document.querySelector('#pin5').emit('look');
+        document.querySelector('#cursor').emit('look');
+      });
+      document.querySelector('#pin5').addEventListener('mouseleave', function () {
+        document.querySelector('#pin5').emit('unlook');
+        document.querySelector('#cursor').emit('unlook');
+      });
+      
+      document.querySelector('#pin5').addEventListener('click', function () {
+        document.querySelector('#pin5').emit('unlook');
+        document.querySelector('#cam').emit('move5');
       });
     </script>
   </body>
